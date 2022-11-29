@@ -2,67 +2,67 @@ let img,sound_1, t;
 
 function preload(){
   img = loadImage('bg5.jpg');
-  sound_1 = loadSound('1.mp3');
+  sound_1 = loadSound('Special.mp3');
   let fr = 10;
   frameRate(fr);
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(img);  
+  background(img);
   let col = color(255, 247, 0);
- //lyric 
+ //lyric
   let message = createP('Tree');
   message.position(width/8,height/8);
   message.style('font-size','1.5em');
   message.style('color',col);
   message.style('font-family','Courier');
-  
+
   let button = createButton('Sliver');
 button.position(3*width/4,height/8);
 
-	
-  
+
+
 //play audio snippet
 function soundControl(audio){
     if(!audio.isPlaying()){
-      audio.play(); 
+      audio.play();
       button.html('No!');
     }else{
       audio.pause();
       button.html('Sliver');
     }
   }
-  
+
 button.mousePressed(function (){
   soundControl(sound_1);
 });
-//invisible button  
+//invisible button
 let invisible_button = createButton(':/)');
-  
+
 invisible_button.position(width/4,height/4);
 
 invisible_button.style('opacity','0');
-	
+
 	invisible_button.style('width','1px');
 		invisible_button.style('height','1px');
 	invisible_button.style('font-size','1px');
-  
+
 invisible_button.mousePressed(hiddenAlert);
-	
-	
+
+
 
 t = new Triangle ();
-	
+
 //sentence
-let sentence = createP('I sat near droves of tents under bridges, and he, near a place where sentient beings used to suffocate to death on the regular while unclothed. ');
+let sentence = createP('I sat near droves of tents under bridges, and he, near a place where sentient beings used to disappear.');
 sentence.position(width/10,height/2);
 sentence.style('color','white');
 sentence.style('font-family','Monaco');
-	
+
 //clock
-	
-	
+
+
  function displayClock() {
     let h = hour();
     let m = minute();
@@ -94,12 +94,12 @@ sentence.style('font-family','Monaco');
 }
 
 function draw() {
-  
+
 t.display();
-  
+
 push();
 
-  
+
 //lines
 push();
 strokeWeight(0.5);
@@ -109,7 +109,7 @@ for(let i = 0; i<20; i++){
   line(width/4+2*i, 0, width/4 +2*i, height);
 }
 for( let i =0; i<50; i++){
-  stroke(25);                  
+  stroke(25);
 	line(0,3*height/4+2*i,width,3*height/4+2*i);
 }
 
@@ -117,52 +117,43 @@ pop();
 
 //number
 let col = color(random(255));
-fill(col); 
+fill(col);
 stroke(25);
 strokeWeight(0.2);
 textSize(random(1,12));
-text('1/4',random(width),random(height));
+text('Silly',random(width),random(height));
 
 //blob
 scale(2);
 translate(width/4,height/8);
 blob((width+height)/80);
-  
+
 }
 
 function blob(number){
-  
+
 let col_1 = color(148, 196, 2);
 push();
-  
+
 let col_2 = color(0);
 
 let col_3 = lerpColor(col_1,col_2,sin(millis()/1000));
-  
+
   stroke(col_3);
   strokeWeight(number/20);
   noFill();  ellipse(number+width/(2*number),number+height/(2*number),number*(number-2),number*(number-1));
-  
+
   let newNumber = number-1;
   if(newNumber>0){
     blob(newNumber);
   }
 pop();
-  
-
-  
-
 }
-
-
-
 
 function windowResized (){
    createCanvas(windowWidth, windowHeight);
   background(img);
 }
-
-
 
 //hidden text
 function hiddenAlert(){
@@ -172,7 +163,7 @@ function hiddenAlert(){
 
 
 class Triangle {
-  constructor (){ 
+  constructor (){
     this.x1=width/3;
     this.y1=height/3;
     this.x2=width/2;
@@ -181,13 +172,13 @@ class Triangle {
     this.y3=3*height/4;
     this.r = 10;
   }
-  display (){ 
+  display (){
 
 
     push();
 fill(232, 93, 0,5);
-triangle(this.x1+mouseX,this.y1+mouseY,this.x2+mouseX,this.y2+mouseY,this.x3+mouseX,this.y3+mouseY);    
-   
+triangle(this.x1+mouseX,this.y1+mouseY,this.x2+mouseX,this.y2+mouseY,this.x3+mouseX,this.y3+mouseY);
+
      pop();
     push();
     fill(225,20);
